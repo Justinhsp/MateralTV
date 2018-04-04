@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">全民TV</string>
+    <string name="welcome_tips">做年轻人喜欢的直播</string>
+    <string name="tab_home">首页</string>
+    <string name="tab_live">直播</string>
+    <string name="tab_follw">关注</string>
+    <string name="tab_me">我的</string>
+    <string name="tab_all">全部</string>
+    <string name="search">搜索</string>
+    <string name="press_again_to_exit">再按一次退出全民TV</string>
+    <string name="scoll_aware_fab_behavior">.help.ScollAwareFABBehavior</string>
+
+
+    <!-- 我的 -->
+    <string name="btn_click_login">十岁天才少年</string>
+    <string name="mine_follow">关注</string>
+    <string name="mine_fans">粉丝</string>
+    <string name="mine_recharge">充值</string>
+    <string name="mine_starlight">我的星光</string>
+    <string name="mine_contribution">星光贡献榜</string>
+    <string name="mine_watch">观看历史</string>
+    <string name="mine_level">我的等级</string>
+    <string name="mine_task">任务中心</string>
+    <string name="mine_game">游戏中心</string>
+    <string name="mine_setting">设置</string>
+</resources>

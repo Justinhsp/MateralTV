@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "com.king.tv"
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:24.1.1'
+    //design
+    compile 'com.android.support:design:24.2.+'
+    //卡片式列表
+    compile 'com.android.support:cardview-v7:24.1.+'
+    testCompile 'junit:junit:4.12'
+    compile 'com.hannesdorfmann.mosby:mvp:2.0.1'
+    compile 'com.hannesdorfmann.mosby:viewstate:2.0.1'
+    //retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    //Gson
+    compile 'com.squareup.retrofit2:converter-gson:2.1.0'
+    //RxJava Adapter
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    //RxAndroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    //RxJava
+    compile 'io.reactivex:rxjava:1.1.6'
+    compile 'com.jude:easyrecyclerview:4.3.7'
+    compile 'jp.wasabeef:glide-transformations:2.0.1'
+    //ButterKnife
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    implementation 'com.google.dagger:dagger:2.9'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.9'
+    provided 'org.glassfish:javax.annotation:10.0-b28'
+    compile 'org.greenrobot:greendao:3.2.0'
+    provided 'org.greenrobot:greendao-generator:3.2.0'
+    //CircleImageView
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.king.base:base:2.0'
+    compile 'com.king.view:flutteringlayout:1.1.0'
+    compile 'com.king.thread:nevercrash:1.0.0'
+    compile 'com.bigkoo:convenientbanner:2.0.5'
+    compile 'com.qiniu:happy-dns:0.2.+'
+    // 多dex配置
+    compile 'com.android.support:multidex:1.0.1'
+    //sdk
+    compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //ndk
+    compile 'com.tencent.bugly:nativecrashreport:latest.release'
+}
