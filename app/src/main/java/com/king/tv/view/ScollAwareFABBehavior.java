@@ -1,4 +1,4 @@
-package com.king.tv.help;
+package com.king.tv.view;
 
 import android.content.Context;
 import android.support.design.widget.CoordinatorLayout;
@@ -9,7 +9,9 @@ import android.view.View;
 
 import com.king.base.util.LogUtils;
 
-
+/**
+ * 自定义Behavior
+ */
 public class ScollAwareFABBehavior extends FloatingActionButton.Behavior {
 
     private Context context;

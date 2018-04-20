@@ -1,4 +1,4 @@
-package com.king.tv.ui.view;
+package com.king.tv.ui.Iview;
 
 import com.king.tv.base.BaseView;
 import com.king.tv.bean.LiveCategory;

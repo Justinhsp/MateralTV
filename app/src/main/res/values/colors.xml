@@ -12,4 +12,6 @@
     <color name="mine_follower_bg">#1f000000</color>
     <color name="bg_red_color">#FB5553</color>
     <color name="bg_red_color_pressed">#FFEEF0</color>
+    <color name="text_error_color">#7f000000</color>
+    <color name="progress_color">#FB5553</color>
 </resources>
