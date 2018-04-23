@@ -9,10 +9,8 @@ import java.util.List;
 public interface IRecommendView extends BaseView {
     //推荐数据
     void OnGetRecommend(Recommend recommed);
-
     //房间数据
     void onGetRooms(List<Recommend.RoomBean> list);
-
     //广告轮播
     void OnGetBanner(List<Banner> list);
 }

@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.jude.easyrecyclerview.EasyRecyclerView;
 import com.jude.easyrecyclerview.adapter.BaseViewHolder;
 import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
@@ -21,6 +23,9 @@ import com.king.tv.ui.activity.ContentActivity;
 
 import java.util.List;
 
+/**
+ * 推荐适配器
+ */
 public class RecommendAdapter extends RecyclerArrayAdapter<Recommend.RoomBean> {
 
 
@@ -89,6 +94,26 @@ public class RecommendAdapter extends RecyclerArrayAdapter<Recommend.RoomBean> {
             context.startActivity(intent);
         }
 
+
+        /**
+         * 赋值
+         * @param data
+         */
+        @Override
+        public void setData(final Recommend.RoomBean data) {
+            super.setData(data);
+            Glide.with(getContext()).load(data.getIcon()).error(R.drawable.default_recommend_icon)
+                    .crossFade().centerCrop().diskCacheStrategy(DiskCacheStrategy.SOURCE).into(iv);
+            tvMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    startLive(getContext(),data.getName(),data.getSlug());
+                }
+            });
+            tvCategroy.setText(data.getName());
+            adapter.setListData(data.getList());
+            adapter.notifyDataSetChanged();
+        }
     }
 
 

@@ -110,11 +110,12 @@ public class HomeFragment extends BaseFragment<ICategoryView, CategoryPresenter>
                 listTemp.add(getText(R.string.recommend));
                 listData.add(RecommendFragment.newInstance());
                 listTemp.add(getText(R.string.tab_all));
-                //listData.add()
+                listData.add(LiveListFragment.newInstance(null));
                 //-----------------------------------------//
                 for (int i=0;i<list.size();i++){
                     LiveCategory liveCategory=list.get(i);
                     listTemp.add(liveCategory.getName());
+                    listData.add(LiveListFragment.newInstance(liveCategory.getSlug()));
                 }
                 toSetList(listTitle,listTemp,false);
             }

@@ -43,7 +43,7 @@ public class LiveListPresenter extends BasePresenter<ILiveListView> {
         }
         getAppComponent().getApiService()
                 .getLiveListResultAll()
-                .observeOn(Schedulers.io())
+                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<LiveListResult>() {
                     @Override
