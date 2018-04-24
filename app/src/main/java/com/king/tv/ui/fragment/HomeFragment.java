@@ -5,16 +5,22 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.view.View;
 import android.widget.ImageView;
+
 import com.king.base.adapter.ViewPagerFragmentAdapter;
 import com.king.tv.R;
 import com.king.tv.base.BaseFragment;
 import com.king.tv.bean.LiveCategory;
+import com.king.tv.help.Constants;
 import com.king.tv.presenter.CategoryPresenter;
 import com.king.tv.ui.Iview.ICategoryView;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * 首页
@@ -156,10 +162,10 @@ public class HomeFragment extends BaseFragment<ICategoryView, CategoryPresenter>
 
 
 
-  /*  @OnClick({R.id.ivLeft, R.id.ivRight, R.id.btnMore,R.id.fab})
+    @OnClick({R.id.iv_left, R.id.ivRight, R.id.btnMore,R.id.fab})
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.ivLeft:
+            case R.id.iv_left:
                 startActivity(getFragmentIntent(Constants.SEARCH_FRAGMENT));
                 break;
             case R.id.ivRight:
@@ -172,7 +178,7 @@ public class HomeFragment extends BaseFragment<ICategoryView, CategoryPresenter>
                 break;
 
         }
-    }*/
+    }
 
 
 }

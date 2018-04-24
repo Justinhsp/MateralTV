@@ -8,11 +8,39 @@
 
     <include layout="@layout/line_h_mine" />
 
-
-    <FrameLayout
-        android:id="@+id/fragment"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/follow_lives_not_login" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/tips_current_not_login"
+            android:textColor="@color/tab_text_color_normal" />
+
+        <TextView
+            android:id="@+id/tvLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/follow_login_btn_bg_selector"
+            android:clickable="true"
+            android:paddingBottom="10dp"
+            android:paddingTop="10dp"
+            android:text="@string/btn_follow_click_login"
+            android:textColor="@color/tab_text_color_selected" />
+
+    </LinearLayout>
+
 
 </LinearLayout>

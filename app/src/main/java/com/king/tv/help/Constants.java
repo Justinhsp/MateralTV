@@ -20,9 +20,7 @@ public class Constants {
     public static final String KEY_URL = "key_url";
 
     public static final String KEY_COVER = "key_cover";
-    /**
-     * showing
-     */
+
     public static final String SHOWING = "showing";
     //-----------------------------------------
     public static final int ROOM_FRAGMENT = 0X01;

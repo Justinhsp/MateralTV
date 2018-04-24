@@ -32,10 +32,8 @@ public class ScollAwareFABBehavior extends FloatingActionButton.Behavior {
 
         LogUtils.d("dy:" + dyConsumed +" -- dyu:" + dyUnconsumed);
         if(dyConsumed>0 && child.getVisibility() == View.VISIBLE){
-//            child.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_behavior_out));
             child.hide();
         }else if(dyConsumed<0 && child.getVisibility() != View.VISIBLE){
-//            child.startAnimation(AnimationUtils.loadAnimation(context, R.anim.fab_behavior_in));
             child.show();
         }
     }

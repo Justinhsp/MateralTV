@@ -4,10 +4,15 @@ import com.king.tv.bean.AppStart;
 import com.king.tv.bean.LiveCategory;
 import com.king.tv.bean.LiveListResult;
 import com.king.tv.bean.Recommend;
+import com.king.tv.bean.Room;
+import com.king.tv.bean.SearchRequestBody;
+import com.king.tv.bean.SearchResult;
 
 import java.util.List;
 
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import rx.Observable;
 
@@ -48,4 +53,20 @@ public interface ApiService {
     @GET("json/categories/{slug}/list.json?v=3.0.1&os=1&ver=4")
     Observable<LiveListResult> getLiveListResultByCategories(@Path("slug") String slug);
 
+
+    /**
+     * 进入房间
+     * @param uid
+     * @return
+     */
+    @GET("json/rooms/{uid}/info.json?v=3.0.1&os=1&ver=4")
+    Observable<Room> enterRoom(@Path("uid")String uid);
+
+    /**
+     * 搜索
+     * @param searchRequestBody
+     * @return
+     */
+    @POST("site/search")
+    Observable<SearchResult> search(@Body SearchRequestBody searchRequestBody);
 }

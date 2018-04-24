@@ -1,13 +1,17 @@
 package com.king.tv.ui.fragment;
 
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.jude.easyrecyclerview.EasyRecyclerView;
+import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
 import com.jude.easyrecyclerview.decoration.SpaceDecoration;
 import com.king.base.util.LogUtils;
+import com.king.base.util.StringUtils;
 import com.king.base.util.SystemUtils;
 import com.king.tv.R;
 import com.king.tv.adapter.EasyLiveAdapter;
@@ -25,9 +29,9 @@ import butterknife.BindView;
 import butterknife.Unbinder;
 
 /**
- * 房间列表
+ * 全部
  */
-public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresenter> implements ILiveListView {
+public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresenter> implements ILiveListView, SwipeRefreshLayout.OnRefreshListener, RecyclerArrayAdapter.OnItemClickListener {
 
     @BindView(R.id.easyRecyclerView)
     EasyRecyclerView easyRecyclerView;
@@ -38,11 +42,12 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
     private List<LiveInfo> listData;
     private EasyLiveAdapter easyLiveAdapter;
 
-    //关键字
+    //关键字|参数
     private String slug;
     private boolean isSearch;
     private int page;
     private boolean isMore;
+    private String key;
 
     public static LiveListFragment newInstance(String slug) {
         return newInstance(slug, false);
@@ -92,10 +97,15 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
         listData = new ArrayList<>();
         easyLiveAdapter = new EasyLiveAdapter(context, listData, isSearch);
         easyLiveAdapter.setNotifyOnChange(false);
+        //布局管理器
         GridLayoutManager gridLayoutManager = new GridLayoutManager(context, 2);
         gridLayoutManager.setSpanSizeLookup(easyLiveAdapter.obtainGridSpanSizeLookUp(2));
         easyRecyclerView.setLayoutManager(gridLayoutManager);
         easyRecyclerView.setAdapter(easyLiveAdapter);
+        //下拉刷新
+        easyRecyclerView.setRefreshListener(this);
+        //RecycleView item点击
+        easyLiveAdapter.setOnItemClickListener(this);
     }
 
     /**
@@ -168,6 +178,63 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
 
 
     /**
+     * 下拉刷新
+     */
+    @Override
+    public void onRefresh() {
+      if (isSearch){
+          if (!StringUtils.isBlank(key)) {
+              page = 0;
+              getPresenter().getLiveListByKey(key, page);
+          }
+      }else {
+          getPresenter().getLiveList(slug);
+      }
+        /**
+         * 加载视图
+         */
+      if (isSearch){
+          loadMore= LayoutInflater.from(context).inflate(R.layout.load_more,null);
+          easyLiveAdapter.setMore(loadMore, new RecyclerArrayAdapter.OnMoreListener() {
+              @Override
+              public void onMoreShow() {
+                  if(isMore){
+                      if(loadMore!=null){
+                          loadMore.setVisibility(View.VISIBLE);
+                      }
+                      getPresenter().getLiveListByKey(key,page);
+                  }
+              }
+              @Override
+              public void onMoreClick() {
+              }
+          });
+      }
+    }
+
+
+    /**
+     * RecycleView Item点击
+     * @param position
+     */
+    @Override
+    public void onItemClick(int position) {
+         startRoom(easyLiveAdapter.getItem(position));
+    }
+
+    /**
+     * 搜索方法
+     * @param key
+     * @param page
+     */
+    public void search(String key,int page){
+        this.key=key;
+        this.page=page;
+        getPresenter().getLiveListByKey(key,page);
+    }
+
+
+    /**
      * 加载条
      */
     @Override
@@ -198,6 +265,5 @@ public class LiveListFragment extends BaseFragment<ILiveListView, LiveListPresen
         }
         easyRecyclerView.showError();
     }
-
 
 }
